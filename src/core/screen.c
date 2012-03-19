@@ -1280,33 +1280,36 @@ meta_screen_ensure_tab_popup (MetaScreen      *screen,
       entries[i].key = (MetaTabEntryKey) window->xwindow;
       entries[i].title = window->title;
 
-      win_pixbuf = get_window_pixbuf (window, &width, &height);
-      if (win_pixbuf == NULL)
-        entries[i].icon = g_object_ref (window->icon);
-      else
-        {
-          int icon_width, icon_height, t_width, t_height;
+      // win_pixbuf = get_window_pixbuf (window, &width, &height);
+      //if (win_pixbuf == NULL)
+      //  entries[i].icon = g_object_ref (window->icon);
+      //else
+      //  {
+      //    int icon_width, icon_height, t_width, t_height;
 #define ICON_OFFSET 6
 
-          icon_width = gdk_pixbuf_get_width (window->icon);
-          icon_height = gdk_pixbuf_get_height (window->icon);
+      //    icon_width = gdk_pixbuf_get_width (window->icon);
+      //    icon_height = gdk_pixbuf_get_height (window->icon);
 
-          t_width = width + ICON_OFFSET;
-          t_height = height + ICON_OFFSET;
+      //    t_width = width + ICON_OFFSET;
+      //    t_height = height + ICON_OFFSET;
 
-          entries[i].icon = gdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8,
+      //    entries[i].icon = gdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8,
                                             t_width, t_height);
-          gdk_pixbuf_fill (entries[i].icon, 0x00000000);
-          gdk_pixbuf_copy_area (win_pixbuf, 0, 0, width, height,
+      //    gdk_pixbuf_fill (entries[i].icon, 0x00000000);
+      //    gdk_pixbuf_copy_area (win_pixbuf, 0, 0, width, height,
                                 entries[i].icon, 0, 0);
-          g_object_unref (win_pixbuf);
-          gdk_pixbuf_composite (window->icon, entries[i].icon, 
-                                t_width - icon_width, t_height - icon_height,
-                                icon_width, icon_height,
-                                t_width - icon_width, t_height - icon_height, 
-                                1.0, 1.0, GDK_INTERP_BILINEAR, 255);
-        }
-                                
+      //    g_object_unref (win_pixbuf);
+      //    gdk_pixbuf_composite (window->icon, entries[i].icon, 
+      //                          t_width - icon_width, t_height - icon_height,
+      //                          icon_width, icon_height,
+      //                          t_width - icon_width, t_height - icon_height, 
+      //                          1.0, 1.0, GDK_INTERP_BILINEAR, 255);
+      //  }
+
+      // No pixmaps on alt+tab
+      entries[i].icon = g_object_ref (window->icon);
+
       entries[i].blank = FALSE;
       entries[i].hidden = !meta_window_showing_on_its_workspace (window);
       entries[i].demands_attention = window->wm_state_demands_attention;
