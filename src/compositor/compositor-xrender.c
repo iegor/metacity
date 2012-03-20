@@ -1288,6 +1288,7 @@ paint_windows (MetaScreen   *screen,
       
       if (cw->picture) 
         {
+#if 0
           if (cw->shadow && cw->type != META_COMP_WINDOW_DOCK) 
             {
               XserverRegion shadow_clip;
@@ -1307,7 +1308,7 @@ paint_windows (MetaScreen   *screen,
               if (shadow_clip)
                 XFixesDestroyRegion (xdisplay, shadow_clip);
             }
-
+#endif
           if ((cw->opacity != (guint) OPAQUE) && !(cw->alpha_pict)) 
             {
               cw->alpha_pict = solid_picture (display, screen, FALSE,
