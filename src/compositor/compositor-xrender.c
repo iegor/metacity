@@ -454,8 +454,8 @@ static void
 generate_shadows (MetaCompScreen *info)
 {
   double radii[LAST_SHADOW_TYPE] = {SHADOW_SMALL_RADIUS,
-                                    SHADOW_MEDIUM_RADIUS,
-                                    SHADOW_LARGE_RADIUS};
+                                    SHADOW_SMALL_RADIUS,
+                                    SHADOW_MEDIUM_RADIUS};
   int i;
 
   for (i = 0; i < LAST_SHADOW_TYPE; i++) {
