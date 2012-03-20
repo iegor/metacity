@@ -461,9 +461,9 @@ generate_shadows (MetaCompScreen *info)
   shadow *shad = g_new0 (shadow, 1);
   shad->gaussian_map = make_gaussian_map(0.5);
   presum_gaussian (shad);
-  info->shadows[SHADOW_SMALL_RADIUS] = shad;
-  info->shadows[SHADOW_MEDIUM_RADIUS] = shad;
-  info->shadows[SHADOW_LARGE_RADIUS] = shad;
+  info->shadows[0] = shad;
+  info->shadows[1] = shad;
+  info->shadows[2] = shad;
 /*
   int i;
   for (i = 0; i < LAST_SHADOW_TYPE; i++) {
