@@ -60,7 +60,8 @@ typedef enum
   META_PREF_CURSOR_SIZE,
   META_PREF_COMPOSITING_MANAGER,
   META_PREF_RESIZE_WITH_RIGHT_BUTTON,
-  META_PREF_FORCE_FULLSCREEN
+  META_PREF_FORCE_FULLSCREEN,
+  META_PREF_SHADOW_THICKNESS
 } MetaPreference;
 
 typedef void (* MetaPrefsChangedFunc) (MetaPreference pref,
@@ -88,6 +89,7 @@ gboolean                    meta_prefs_get_application_based  (void);
 gboolean                    meta_prefs_get_disable_workarounds (void);
 gboolean                    meta_prefs_get_auto_raise         (void);
 int                         meta_prefs_get_auto_raise_delay   (void);
+gdouble                     meta_prefs_get_shadow_thickness   (void);
 gboolean                    meta_prefs_get_reduced_resources  (void);
 gboolean                    meta_prefs_get_gnome_accessibility (void);
 gboolean                    meta_prefs_get_gnome_animations   (void);

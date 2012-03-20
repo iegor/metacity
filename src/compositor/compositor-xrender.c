@@ -40,6 +40,7 @@
 #include "frame.h"
 #include "errors.h"
 #include "window.h"
+#include "prefs.h"
 #include "compositor-private.h"
 #include "compositor-xrender.h"
 #include "xprops.h"
@@ -459,7 +460,7 @@ generate_shadows (MetaCompScreen *info)
                                     SHADOW_MEDIUM_RADIUS};
 */
   shadow *shad = g_new0 (shadow, 1);
-  shad->gaussian_map = make_gaussian_map(0.5);
+  shad->gaussian_map = make_gaussian_map(meta_prefs_get_shadow_thickness());
   presum_gaussian (shad);
   info->shadows[0] = shad;
   info->shadows[1] = shad;

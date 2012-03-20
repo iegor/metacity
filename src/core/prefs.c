@@ -88,6 +88,7 @@ static gboolean application_based = FALSE;
 static gboolean disable_workarounds = FALSE;
 static gboolean auto_raise = FALSE;
 static gboolean auto_raise_delay = 500;
+static gdouble shadow_thickness = 2.0;
 static gboolean provide_visual_bell = FALSE;
 static gboolean bell_is_audible = TRUE;
 static gboolean reduced_resources = FALSE;
@@ -466,6 +467,12 @@ static MetaIntPreference preferences_int[] =
       &auto_raise_delay,
       0, 10000, 0,
       /* @@@ Get rid of MAX_REASONABLE_AUTO_RAISE_DELAY */
+    },
+    { "/apps/metacity/general/shadow_thickness",
+      META_PREF_SHADOW_THICKNESS,
+      &shadow_thickness,
+      0, 10000, 0,
+      /* @@@ Get rid of MAX_REASONABLE_SHADOW_THICKNESS */
     },
     { "/desktop/gnome/peripherals/mouse/cursor_size",
       META_PREF_CURSOR_SIZE,
@@ -1713,6 +1720,9 @@ meta_preference_to_string (MetaPreference pref)
     case META_PREF_AUTO_RAISE_DELAY:
       return "AUTO_RAISE_DELAY";
 
+    case META_PREF_SHADOW_THICKNESS:
+      return "SHADOW_THICKNESS";
+
     case META_PREF_COMMANDS:
       return "COMMANDS";
 
@@ -2625,6 +2635,11 @@ int
 meta_prefs_get_auto_raise_delay (void)
 {
   return auto_raise_delay;
+}
+
+gdouble
+meta_prefs_get_shadow_thickness (void) {
+  return shadow_thickness;
 }
 
 gboolean
