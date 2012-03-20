@@ -453,11 +453,19 @@ presum_gaussian (shadow *shad)
 static void
 generate_shadows (MetaCompScreen *info)
 {
-  double radii[LAST_SHADOW_TYPE] = {SHADOW_SMALL_RADIUS,
-                                    SHADOW_SMALL_RADIUS,
+/*
+  double radii[LAST_SHADOW_TYPE] = {SHADOW_MEDIUM_RADIUS,
+                                    SHADOW_MEDIUM_RADIUS,
                                     SHADOW_MEDIUM_RADIUS};
+*/
+  shadow *shad = g_new0 (shadow, 1);
+  shad->gaussian_map = make_gaussian_map(0.5);
+  presum_gaussian (shad);
+  info->shadows[SHADOW_SMALL_RADIUS] = shad;
+  info->shadows[SHADOW_MEDIUM_RADIUS] = shad;
+  info->shadows[SHADOW_LARGE_RADIUS] = shad;
+/*
   int i;
-
   for (i = 0; i < LAST_SHADOW_TYPE; i++) {
     shadow *shad = g_new0 (shadow, 1);
 
@@ -466,6 +474,7 @@ generate_shadows (MetaCompScreen *info)
 
     info->shadows[i] = shad;
   }
+*/
 }
 
 static XImage *
