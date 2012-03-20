@@ -1295,10 +1295,10 @@ meta_screen_ensure_tab_popup (MetaScreen      *screen,
       //    t_height = height + ICON_OFFSET;
 
       //    entries[i].icon = gdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8,
-                                            t_width, t_height);
+      //                                      t_width, t_height);
       //    gdk_pixbuf_fill (entries[i].icon, 0x00000000);
       //    gdk_pixbuf_copy_area (win_pixbuf, 0, 0, width, height,
-                                entries[i].icon, 0, 0);
+      //                          entries[i].icon, 0, 0);
       //    g_object_unref (win_pixbuf);
       //    gdk_pixbuf_composite (window->icon, entries[i].icon, 
       //                          t_width - icon_width, t_height - icon_height,
